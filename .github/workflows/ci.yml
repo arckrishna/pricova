@@ -25,15 +25,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-          cache-dependency-path: pricova/backend/package-lock.json
 
       - name: Install Backend Dependencies
-        working-directory: ./pricova/backend
-        run: npm ci || npm install
+        working-directory: ./backend
+        run: npm install
 
       - name: Run Backend Integration Tests
-        working-directory: ./pricova/backend
+        working-directory: ./backend
         env:
           NODE_ENV: test
           JWT_SECRET: test_jwt_secret_github_actions_12345
@@ -52,13 +50,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
-          cache-dependency-path: pricova/frontend/package-lock.json
 
       - name: Install Frontend Dependencies
-        working-directory: ./pricova/frontend
+        working-directory: ./frontend
         run: npm install --legacy-peer-deps
 
       - name: Compile & Build React App (Vite)
-        working-directory: ./pricova/frontend
+        working-directory: ./frontend
         run: npm run build
