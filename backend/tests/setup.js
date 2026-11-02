@@ -7,11 +7,13 @@ beforeAll(async () => {
   process.env.NODE_ENV = 'test';
   process.env.JWT_SECRET = 'test_jwt_secret_pricova_key_12345';
   
-  if (!mongoServer) {
+  const uri = process.env.MONGO_URI || (async () => {
     mongoServer = await MongoMemoryServer.create();
-    const uri = mongoServer.getUri();
-    await mongoose.connect(uri);
-  }
+    return mongoServer.getUri();
+  })();
+
+  const resolvedUri = await uri;
+  await mongoose.connect(resolvedUri);
 }, 60000);
 
 afterEach(async () => {
