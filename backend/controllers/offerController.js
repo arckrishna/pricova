@@ -133,7 +133,7 @@ const createOffer = async (req, res) => {
       .populate('platform', 'name logo website color');
 
     // Trigger price alert checking, history recording & Socket.io notifications
-    handleOfferPriceChange(populatedOffer, null);
+    await handleOfferPriceChange(populatedOffer, null);
 
     res.status(201).json({
       success: true,
@@ -176,7 +176,7 @@ const updateOffer = async (req, res) => {
       .populate('platform', 'name logo website color');
 
     // Trigger price change logic (history recording, alert evaluation, socket notification)
-    handleOfferPriceChange(offer, previousPrice);
+    await handleOfferPriceChange(offer, previousPrice);
 
     res.status(200).json({
       success: true,
