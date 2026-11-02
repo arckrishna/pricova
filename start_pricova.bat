@@ -12,18 +12,18 @@ start "PRICOVA Backend" cmd /k "cd backend && npm run dev"
 
 timeout /t 3 /nobreak >nul
 
-echo [2/3] Starting Frontend Client (Port 5173)...
+echo [2/3] Starting Frontend Client (Port 3000)...
 start "PRICOVA Frontend" cmd /k "cd frontend && npm run dev"
 
 timeout /t 2 /nobreak >nul
 
 echo [3/3] Opening PRICOVA in your browser...
-start http://localhost:5173
+start http://localhost:3000
 
 echo.
 echo ============================================================
 echo   PRICOVA is running!
-echo   Frontend:  http://localhost:5173
+echo   Frontend:  http://localhost:3000
 echo   Backend:   http://localhost:5000/api
 echo.
 echo   Demo Admin Login: admin@pricova.com / Admin@123

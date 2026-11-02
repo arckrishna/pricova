@@ -14,16 +14,16 @@ Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$Sc
 
 Start-Sleep -Seconds 3
 
-Write-Host "[2/3] Starting Frontend Client (Port 5173)..." -ForegroundColor Green
+Write-Host "[2/3] Starting Frontend Client (Port 3000)..." -ForegroundColor Green
 Start-Process powershell -ArgumentList "-NoExit", "-Command", "Set-Location '$ScriptDir\frontend'; npm run dev"
 
 Start-Sleep -Seconds 2
 
 Write-Host "[3/3] Opening Browser..." -ForegroundColor Green
-Start-Process "http://localhost:5173"
+Start-Process "http://localhost:3000"
 
 Write-Host "`nPRICOVA is now live!" -ForegroundColor Cyan
-Write-Host "Frontend: http://localhost:5173" -ForegroundColor White
+Write-Host "Frontend: http://localhost:3000" -ForegroundColor White
 Write-Host "Backend:  http://localhost:5000/api" -ForegroundColor White
 Write-Host "`nCredentials for testing:" -ForegroundColor Yellow
 Write-Host "Admin: admin@pricova.com / Admin@123"
